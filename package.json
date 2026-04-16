@@ -1,0 +1,61 @@
+{
+  "name": "bass-engine",
+  "version": "1.0.0",
+  "description": "Lightweight, WebGL-powered game engine for indie developers",
+  "author": "Brenninho",
+  "license": "Apache-2.0",
+  "type": "module",
+  "main":    "dist/bass-engine.cjs.js",
+  "module":  "dist/bass-engine.esm.js",
+  "browser": "dist/bass-engine.umd.js",
+  "unpkg":   "dist/bass-engine.min.js",
+  "exports": {
+    ".": {
+      "import":  "./dist/bass-engine.esm.js",
+      "require": "./dist/bass-engine.cjs.js",
+      "browser": "./dist/bass-engine.umd.js"
+    }
+  },
+  "files": [
+    "dist",
+    "bass-engine.js",
+    "README.md",
+    "LICENSE"
+  ],
+  "scripts": {
+    "dev":           "vite",
+    "build":         "npm run clean && npm run build:engine && npm run build:site",
+    "build:engine":  "rollup -c rollup.config.js",
+    "build:site":    "vite build",
+    "preview":       "vite preview",
+    "clean":         "node -e \"require('fs').rmSync('dist',{recursive:true,force:true})\"",
+    "size":          "node -e \"const fs=require('fs');const s=fs.statSync('dist/bass-engine.min.js').size;console.log('min:',s+'b  gz:~'+(s*0.35|0)+'b')\""
+  },
+  "devDependencies": {
+    "rollup": "^4.18.0",
+    "@rollup/plugin-terser": "^0.4.4",
+    "@rollup/plugin-node-resolve": "^15.2.3",
+    "vite": "^5.3.0"
+  },
+  "keywords": [
+    "game-engine",
+    "webgl",
+    "canvas",
+    "ecs",
+    "2d",
+    "3d",
+    "physics",
+    "indie",
+    "browser"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Brenninho/BassEngine"
+  },
+  "bugs": {
+    "url": "https://github.com/Brenninho/BassEngine/issues"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}
